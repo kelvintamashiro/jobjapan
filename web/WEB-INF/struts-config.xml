@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+"http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<!--
+     This is the Struts configuration file for the example application,
+     using the proposed new syntax.
+
+     NOTE:  You would only flesh out the details in the "form-bean"
+     declarations if you had a generator tool that used them to create
+     the corresponding Java classes for you.  Otherw0se, you would
+     need only the "form-bean" element itself, with the corresponding/
+     "name" and "type" attributes.
+-->
+<struts-config>
+    <!--          <plug-in className="br.com.abre.TimerServlet">
+        <set-property property="startOnLoad" value="true"/>
+        <set-property property="startupDelay" value="0"/>
+    </plug-in>-->
+
+
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
+        <!-- Pagina Inicial -->
+        <form-bean name="IndexForm"                 type="br.com.Form.IndexForm"/>
+        <form-bean name="LoginForm"                 type="br.com.Form.LoginForm"/>
+        <form-bean name="PessoaFisicaForm"          type="br.com.Form.PessoaFisicaForm"/>
+ 
+    </form-beans>
+
+    <!-- ========== Action Mapping Definitions ============================== -->
+    <action-mappings>
+        
+        <action    path="/Index"
+                   type="br.com.Action.IndexAction"
+                   name="PessoaFisicaForm"
+                   scope="request"
+                   validate="false"
+                   input="/index.jsp">
+            <forward name="page"                        path="/index.jsp"/>
+            <forward name="redirecionarAcesso"          path="/tela_interativa.jsp"/>
+            
+        </action>
+      
+        <action    path="/Login"
+                   type="br.com.Action.LoginAction"
+                   name="LoginForm"
+                   scope="request"
+                   validate="false"
+                   input="/index.jsp">
+            <forward name="page"                        path="/index.jsp"/>
+            <forward name="pageEsqueceuSenha"           path="/esqueceu_senha.jsp"/>
+            <forward name="resetarSenha"                path="/esqueceu_senha.jsp"/>
+            <forward name="frwErroLogin"                path="/index.jsp"/>
+            <forward name="frwCandidato"                path="/Index.do?action=redirecionarAcesso"/>
+            <forward name="frwAdm"                      path="/Index.do?action=redirecionarAcesso"/>
+        </action>
+        
+        <action    path="/PessoaFisica"
+                   type="br.com.Action.PessoaFisicaAction"
+                   name="PessoaFisicaForm"
+                   scope="request"
+                   validate="false"
+                   input="/pessoa_fisica.jsp">
+            <forward name="page"                            path="/pessoa_fisica.jsp"/>
+            <forward name="salvar"                          path="/pessoa_fisica.jsp"/>
+            <forward name="pageAtualizarCadastro"           path="/pessoa_fisica_atualizar.jsp"/>
+            <forward name="atualizar"                       path="/pessoa_fisica_atualizar.jsp"/>
+            <forward name="pageConsultar"                   path="/pessoa_fisica_consultar.jsp"/>
+            <forward name="consultar"                       path="/pessoa_fisica_consultar.jsp"/>
+            
+        </action>
+        
+        
+    </action-mappings>
+
+    <!-- ================ Tamanho Maximo para Upload ======================= -->
+    <controller maxFileSize="2M" />
+
+    <!-- ========== Message Resources Definitions =========================== -->
+    <message-resources
+        parameter="br.com.abre.ApplicationResources"/>
+
+    <!-- ========== Plug Ins Configuration ================================== -->
+
+    <!--
+    Add multiple validator resource files by setting the pathnames property
+    with a comma delimitted list of resource files to load.
+    -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,
+                      /WEB-INF/validation.xml"/>
+    </plug-in>
+</struts-config>

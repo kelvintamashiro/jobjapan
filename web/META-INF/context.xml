@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/jobjapan">
+    
+    <Resource name="jdbc/sitesn59_job"
+              auth="Container"
+              type="javax.sql.DataSource"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              testWhileIdle="true"
+              testOnBorrow="true"
+              testOnReturn="false"
+              validationQuery="SELECT 1"
+              validationInterval="30000"
+              timeBetweenEvictionRunsMillis="30000"
+              maxActive="100"
+              minIdle="10"
+              maxWait="10000"
+              initialSize="10"
+              removeAbandonedTimeout="60"
+              removeAbandoned="true"
+              logAbandoned="true"
+              minEvictableIdleTimeMillis="30000"
+              jmxEnabled="true"
+              jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
+            org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
+              username="sitesn59_user"
+              password="miguel0210"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://br966.hostgator.com.br:3306/sitesn59_job?useSSL=false"
+    />
+    
+</Context>

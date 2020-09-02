@@ -22,8 +22,8 @@
               jmxEnabled="true"
               jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
             org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
-              username="sitesn59_user"
-              password="miguel0210"
+              username="user"
+              password="password"
               driverClassName="com.mysql.jdbc.Driver"
               url="jdbc:mysql://br966.hostgator.com.br:3306/sitesn59_job?useSSL=false"
     />
